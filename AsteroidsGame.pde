@@ -1,15 +1,53 @@
 //your variable declarations here
+SpaceShip thom;
 public void setup() 
 {
-  //your code here
+  size(600,600);
+  thom = new SpaceShip();
+
 }
 public void draw() 
 {
+  background(0);
+  thom.show();
   //your code here
 }
-class SpaceShip //extends Floater  
+public void keyPressed()
+{
+
+
+
+  
+}
+class SpaceShip extends Floater  
 {   
-    //your code here
+    public SpaceShip(){
+    corners=3;  //the number of corners, a triangular floater has 3   
+    xCorners = new int[corners];   
+    yCorners = new int[corners];   
+    xCorners[0] = -10;
+    yCorners[0] = -10;
+    xCorners[1] = 20;
+    yCorners[1] = 0;
+    xCorners[2] = -10;
+    yCorners[2] = 10;
+    myColor=(int)color(0,255,255); 
+    myCenterX=300;
+    myCenterY=300; //holds center coordinates   
+    myDirectionX = 0; 
+    myDirectionY = 0; //holds x and y coordinates of the vector for dire
+    myPointDirection = 0; //holds current direction the ship is pointing in degrees   
+    }
+    public void setX(int x){myCenterX=x;}  
+    public int getX(){return (int)myCenterX;}   
+    public void setY(int y){myCenterY=y;}  
+    public int getY(){return (int)myCenterY;}  
+    public void setDirectionX(double x){myDirectionX=x;} 
+    public double getDirectionX(){return myDirectionX;}   
+    public void setDirectionY(double y){myDirectionY=y;}
+    public double getDirectionY(){return myDirectionY;}
+    public void setPointDirection(int degrees){myPointDirection=degrees;}  
+    public double getPointDirection(){return myPointDirection;} 
 }
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
 {   
