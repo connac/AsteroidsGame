@@ -1,20 +1,28 @@
 //your variable declarations here
 SpaceShip thom;
-Star phil;
+Star[] phil;
+
 public void setup() 
 {
   size(600,600);
+  
   thom = new SpaceShip();
-  phil = new Star();
-
-
+  phil = new Star[100];
+  for(int i=0; i<phil.length; i++)
+  {
+    phil[i] = new Star();
+  }
 }
 public void draw() 
 {
   background(0);
   thom.show();
   thom.move();
-  phil.show();
+  for(int i=0; i<phil.length; i++){
+  phil[i].show();
+  }
+
+
 
   //your code here
 }
@@ -25,17 +33,17 @@ public void keyPressed()
   }
   if(keyCode==UP){
     
-    thom.accelerate(.2);
+    thom.accelerate(.3);
   }
   if(keyCode==DOWN){
 
-    thom.accelerate(-.2);
+    thom.accelerate(-.3);
   }
   if(keyCode==RIGHT){
-    thom.rotate(2);
+    thom.rotate(7);
   }
   if(keyCode==LEFT){
-    thom.rotate(-2);
+    thom.rotate(-7);
   }
 
 
@@ -52,7 +60,8 @@ public class Star
   public void show(){
     noStroke();
     fill(255);
-    ellipse(myX, myY, 5, 5);
+    ellipse(myX, myY, 3, 3);
+
     
   }
 }
