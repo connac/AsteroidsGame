@@ -1,31 +1,36 @@
 //your variable declarations here
 Star[] phil;
-Asteroid jonny;
+Asteroid[] jonny;
 SpaceShip thom;
 
 public void setup() 
 {
   size(600,600);
   
-  jonny = new Asteroid();
-  thom = new SpaceShip();
   phil = new Star[150];
   for(int i=0; i<phil.length; i++)
   {
     phil[i] = new Star();
   }
+  jonny = new Asteroid[8];
+  for(int i=0; i<jonny.length; i++)
+  {
+    jonny[i] = new Asteroid();
+  }
+  thom = new SpaceShip();
 }
 public void draw() 
 {
   background(0);
-  jonny.show();
-  thom.show();
-  thom.move();
   for(int i=0; i<phil.length; i++){
   phil[i].show();
   }
-
-
+  for(int i=0; i<jonny.length; i++){
+  jonny[i].show();
+  jonny[i].move();
+  }
+  thom.show();
+  thom.move();
 
   //your code here
 }
@@ -61,9 +66,9 @@ public class Star
 
   }
   public void show(){
-    noStroke();
-    fill(255);
-    ellipse(myX, myY, 3, 3);
+    stroke(255);
+    noFill();
+    ellipse(myX, myY, 5, 5);
 
     
   }
@@ -107,7 +112,9 @@ public class SpaceShip extends Floater
 }
 public class Asteroid extends Floater
 {
-    public Asteroid(){
+    private int rotSpeed;
+    public Asteroid()
+    {
     corners=5;  //the number of corners, a triangular floater has 3   
     xCorners = new int[corners];   
     yCorners = new int[corners];   
@@ -122,25 +129,31 @@ public class Asteroid extends Floater
     xCorners[4] = -26;
     yCorners[4] = -24;
     myColor=(int)color(144,132,113); 
-    myCenterX=300;
-    myCenterY=300; //holds center coordinates   
-    myDirectionX = 0; 
-    myDirectionY = 0; //holds x and y coordinates of the vector for dire
-    myPointDirection = 0; //holds current direction the ship is pointing in degrees  
+    myCenterX=(int)(Math.random()*600);
+    myCenterY=(int)(Math.random()*600); //holds center coordinates   
+    myDirectionX = (int)(Math.random()*3); 
+    myDirectionY = (int)(Math.random()*3); //holds x and y coordinates of the vector for dire
+    myPointDirection = (int)(Math.random()*2); //holds current direction the ship is pointing in degrees  
+    rotSpeed = (int)(Math.random()*5);
     }
-    public void setX(int x){myCenterX=x;}  
-    public int getX(){return (int)myCenterX;}   
-    public void setY(int y){myCenterY=y;}  
-    public int getY(){return (int)myCenterY;}  
-    public void setDirectionX(double x){myDirectionX=x;} 
-    public double getDirectionX(){return myDirectionX;}   
-    public void setDirectionY(double y){myDirectionY=y;}
-    public double getDirectionY(){return myDirectionY;}
-    public void setPointDirection(int degrees){myPointDirection=degrees;}  
-    public double getPointDirection(){return myPointDirection;} 
-    
+    public void move ()
+    {
+      rotate((int(rotSpeed)));
+      super.move();
 
-}
+    }
+    public void setX(int x){ myCenterX = x;}
+    public int getX(){ return (int)myCenterX;}
+    public void setY(int y){ myCenterY = y;}
+    public int getY(){ return (int)myCenterY;}
+    public void setDirectionX(double x){ myDirectionX = x;}
+    public double getDirectionX(){ return myDirectionX;}
+    public void setDirectionY(double y){ myDirectionY = y;}
+    public double getDirectionY(){ return myDirectionY;}
+    public void setPointDirection(int degrees){ myPointDirection = degrees;}
+    public double getPointDirection(){ return myPointDirection;}
+
+    }
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
 {   
   protected int corners;  //the number of corners, a triangular floater has 3   
