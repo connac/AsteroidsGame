@@ -109,6 +109,41 @@ public class SpaceShip extends Floater
     public double getDirectionY(){return myDirectionY;}
     public void setPointDirection(int degrees){myPointDirection=degrees;}  
     public double getPointDirection(){return myPointDirection;} 
+    public void show ()  //Draws the floater at the current position  
+  {             
+    noFill();   
+    stroke(myColor);    
+    //convert degrees to radians for sin and cos         
+    double dRadians = myPointDirection*(Math.PI/180);                 
+    int xRotatedTranslated, yRotatedTranslated;    
+    beginShape();         
+    for(int nI = 0; nI < corners; nI++)    
+    {     
+      //rotate and translate the coordinates of the floater using current direction 
+      xRotatedTranslated = (int)((xCorners[nI]* Math.cos(dRadians)) - (yCorners[nI] * Math.sin(dRadians))+myCenterX);     
+      yRotatedTranslated = (int)((xCorners[nI]* Math.sin(dRadians)) + (yCorners[nI] * Math.cos(dRadians))+myCenterY);      
+      vertex(xRotatedTranslated,yRotatedTranslated);    
+    }   
+    endShape(CLOSE);  
+  }   
+    // public void show ()  //Draws the floater at the current position  
+    // {             
+    //   noFill();   
+    //   stroke(myColor);    
+    //   //convert degrees to radians for sin and cos         
+    //   double dRadians = myPointDirection*(Math.PI/180);                 
+    //   int xRotatedTranslated, yRotatedTranslated;    
+    //   beginShape();         
+    //   for(int nI = 0; nI < corners; nI++)    
+    //   {     
+    //       //rotate and translate the coordinates of the floater using current direction 
+    //       xRotatedTranslated = (int)((xCorners[nI]* Math.cos(dRadians)) - (yCorners[nI] * Math.sin(dRadians))+myCenterX);     
+    //       yRotatedTranslated = (int)((xCorners[nI]* Math.sin(dRadians)) + (yCorners[nI] * Math.sin(dRadians))+myCenterX);     
+    //       vertex(xRotatedTranslated,yRotatedTranslated);    
+    //   }   
+    //   endShape(CLOSE);  
+    // }   
+
 }
 public class Asteroid extends Floater
 {
@@ -152,6 +187,23 @@ public class Asteroid extends Floater
     public double getDirectionY(){ return myDirectionY;}
     public void setPointDirection(int degrees){ myPointDirection = degrees;}
     public double getPointDirection(){ return myPointDirection;}
+    public void show ()  //Draws the floater at the current position  
+  {             
+    noFill(); 
+    stroke(myColor);    
+    //convert degrees to radians for sin and cos         
+    double dRadians = myPointDirection*(Math.PI/180);                 
+    int xRotatedTranslated, yRotatedTranslated;    
+    beginShape();         
+    for(int nI = 0; nI < corners; nI++)    
+    {     
+      //rotate and translate the coordinates of the floater using current direction 
+      xRotatedTranslated = (int)((xCorners[nI]* Math.cos(dRadians)) - (yCorners[nI] * Math.sin(dRadians))+myCenterX);     
+      yRotatedTranslated = (int)((xCorners[nI]* Math.sin(dRadians)) + (yCorners[nI] * Math.cos(dRadians))+myCenterY);      
+      vertex(xRotatedTranslated,yRotatedTranslated);    
+    }   
+    endShape(CLOSE);  
+  }   
 
     }
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
