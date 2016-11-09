@@ -12,7 +12,7 @@ public void setup()
   {
     phil[i] = new Star();
   }
-  jonny = new Asteroid[8];
+  jonny = new Asteroid[12];
   for(int i=0; i<jonny.length; i++)
   {
     jonny[i] = new Asteroid();
@@ -66,7 +66,7 @@ public class Star
 
   }
   public void show(){
-    stroke(255);
+    stroke(205, 230, 255);
     noFill();
     ellipse(myX, myY, 5, 5);
 
@@ -150,25 +150,27 @@ public class Asteroid extends Floater
     private int rotSpeed;
     public Asteroid()
     {
-    corners=5;  //the number of corners, a triangular floater has 3   
+    corners=6;  //the number of corners, a triangular floater has 3   
     xCorners = new int[corners];   
     yCorners = new int[corners];   
-    xCorners[0] = 0;
-    yCorners[0] = -45;
-    xCorners[1] = 26;
-    yCorners[1] = -24;
-    xCorners[2] = 14;
+    xCorners[0] = -8;
+    yCorners[0] = -12;
+    xCorners[1] = 8;
+    yCorners[1] = -12;
+    xCorners[2] = 12;
     yCorners[2] = 0;
-    xCorners[3] = -14;
-    yCorners[3] = 0;
-    xCorners[4] = -26;
-    yCorners[4] = -24;
+    xCorners[3] = 8;
+    yCorners[3] = 12;
+    xCorners[4] = -8;
+    yCorners[4] = 12;
+    xCorners[5] = -12;
+    yCorners[5] = 0;
     myColor=(int)color(144,132,113); 
     myCenterX=(int)(Math.random()*600);
     myCenterY=(int)(Math.random()*600); //holds center coordinates   
-    myDirectionX = (int)(Math.random()*3); 
-    myDirectionY = (int)(Math.random()*3); //holds x and y coordinates of the vector for dire
-    myPointDirection = (int)(Math.random()*2); //holds current direction the ship is pointing in degrees  
+    myDirectionX = (int)(Math.random()*4); 
+    myDirectionY = (int)(Math.random()*4); //holds x and y coordinates of the vector for dire
+    myPointDirection = (int)(Math.random()*5); //holds current direction the ship is pointing in degrees  
     rotSpeed = (int)(Math.random()*5);
     }
     public void move ()
