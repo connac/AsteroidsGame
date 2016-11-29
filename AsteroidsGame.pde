@@ -1,8 +1,8 @@
 //your variable declarations here
 Star[] phil;
-Asteroid[] jonny;
+// Asteroid[] jonny;
 SpaceShip thom;
-
+ArrayList<Asteroid> eds = new ArrayList<Asteroid>();
 public void setup() 
 {
   size(600,600);
@@ -12,12 +12,16 @@ public void setup()
   {
     phil[i] = new Star();
   }
-  jonny = new Asteroid[12];
-  for(int i=0; i<jonny.length; i++)
-  {
-    jonny[i] = new Asteroid();
-  }
+  // jonny = new Asteroid[12];
+  // for(int i=0; i<jonny.length; i++)
+  // {
+  //   jonny[i] = new Asteroid();
+  // }
   thom = new SpaceShip();
+  for(int i=0; i<10; i++)
+  {
+    eds.add(new Asteroid());
+  }
 }
 public void draw() 
 {
@@ -25,14 +29,22 @@ public void draw()
   for(int i=0; i<phil.length; i++){
   phil[i].show();
   }
-  for(int i=0; i<jonny.length; i++){
-  jonny[i].show();
-  jonny[i].move();
-  }
+  // for(int i=0; i<jonny.length; i++){
+  // jonny[i].show();
+  // jonny[i].move();
+  // }
   thom.show();
   thom.move();
+  for(int i=0; i<eds.size(); i++){
+    eds.get(i).show();
+    eds.get(i).move();
+  }
+  for(int i=0; i<eds.size(); i++){
+    if(dist(thom.getX(),thom.getY(),eds.get(i).getX(),eds.get(i).getY())<=20){
+      eds.remove(i);
+    }
+  }
 
-  //your code here
 }
 public void keyPressed()
 {
@@ -48,10 +60,10 @@ public void keyPressed()
     thom.accelerate(-.3);
   }
   if(keyCode==RIGHT){
-    thom.rotate(7);
+    thom.rotate(10);
   }
   if(keyCode==LEFT){
-    thom.rotate(-7);
+    thom.rotate(-10);
   }
 
 
