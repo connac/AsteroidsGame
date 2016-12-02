@@ -12,7 +12,7 @@ public void setup()
   {
     phil[i] = new Star();
   }
-  // jonny = new Asteroid[12];
+  // jonny = new Asteroid[50];
   // for(int i=0; i<jonny.length; i++)
   // {
   //   jonny[i] = new Asteroid();
@@ -40,7 +40,7 @@ public void draw()
     eds.get(i).move();
   }
   for(int i=0; i<eds.size(); i++){
-    if(dist(thom.getX(),thom.getY(),eds.get(i).getX(),eds.get(i).getY())<=20){
+    if(dist(thom.getX(),thom.getY(),eds.get(i).getX(),eds.get(i).getY())<=25){
       eds.remove(i);
     }
   }
