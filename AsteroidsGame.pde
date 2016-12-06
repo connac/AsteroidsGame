@@ -2,7 +2,8 @@
 Star[] phil;
 // Asteroid[] jonny;
 SpaceShip thom;
-ArrayList<Asteroid> eds = new ArrayList<Asteroid>();
+ArrayList<Asteroid> ed = new ArrayList<Asteroid>();
+ArrayList<Bullet> colin = new ArrayList<Bullet>();
 public void setup() 
 {
   size(600,600);
@@ -20,7 +21,7 @@ public void setup()
   thom = new SpaceShip();
   for(int i=0; i<10; i++)
   {
-    eds.add(new Asteroid());
+    ed.add(new Asteroid());
   }
 }
 public void draw() 
@@ -35,14 +36,18 @@ public void draw()
   // }
   thom.show();
   thom.move();
-  for(int i=0; i<eds.size(); i++){
-    eds.get(i).show();
-    eds.get(i).move();
+  for(int i=0; i<ed.size(); i++){
+    ed.get(i).show();
+    ed.get(i).move();
   }
-  for(int i=0; i<eds.size(); i++){
-    if(dist(thom.getX(),thom.getY(),eds.get(i).getX(),eds.get(i).getY())<=25){
-      eds.remove(i);
+  for(int i=0; i<ed.size(); i++){
+    if(dist(thom.getX(),thom.getY(),ed.get(i).getX(),ed.get(i).getY())<=25){
+      ed.remove(i);
     }
+  for(int i=0; i<colin.size(); i++){
+    colin.get(i).show();
+    colin.get(i).move();
+  }
   }
 
 }
