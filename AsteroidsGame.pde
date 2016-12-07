@@ -19,7 +19,7 @@ public void setup()
   //   jonny[i] = new Asteroid();
   // }
   thom = new SpaceShip();
-  for(int i=0; i<10; i++)
+  for(int i=0; i<20; i++)
   {
     ed.add(new Asteroid());
   }
@@ -44,16 +44,25 @@ public void draw()
     if(dist(thom.getX(),thom.getY(),ed.get(i).getX(),ed.get(i).getY())<=25){
       ed.remove(i);
     }
+  }
   for(int i=0; i<colin.size(); i++){
     colin.get(i).show();
     colin.get(i).move();
   }
+  for(int i=0; i<ed.size(); i++){
+    for(int j=0; j<colin.size(); j++)
+    if(dist(colin.get(j).getX(),colin.get(j).getY(),ed.get(i).getX(),ed.get(i).getY())<=25){
+      ed.remove(i);
+      colin.remove(j);
+    }
+  }
+  
   }
 
-}
+
 public void keyPressed()
 {
-  if(key==' '){
+  if(key=='B'){
     thom.hyperspace();
   }
   if(keyCode==UP){
@@ -69,6 +78,9 @@ public void keyPressed()
   }
   if(keyCode==LEFT){
     thom.rotate(-10);
+  }
+  if(key==' '){
+    colin.add(new Bullet(thom));
   }
 
 

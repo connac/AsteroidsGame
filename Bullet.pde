@@ -1,28 +1,24 @@
 class Bullet extends Floater
 {
-	Bullet(SpaceShip thom)
+	Bullet(SpaceShip nigel)
 	{
-		myCenterX = thom.getX();
-		myCenterY = thom.getY();
-		myPointDirection = thom.getPointDirection();
+		myCenterX = nigel.getX();
+		myCenterY = nigel.getY();
+		myPointDirection = nigel.getPointDirection();
 		double dRadians = myPointDirection*(Math.PI/180);
-		myDirectionX = 5*Math.cos(dRadians) + thom.getDirectionX();
-		myDirectionY = 5*Math.sin(dRadians) + thom.getDirectionY();
+		myDirectionX = 5*Math.cos(dRadians) + nigel.getDirectionX();
+		myDirectionY = 5*Math.sin(dRadians) + nigel.getDirectionY();
 	}
 	public void show()
 	{
-		fill(255,0,0);
-		stroke(255,0,0);
+		
+		stroke(255,255,255);
 		ellipse((int)myCenterX,(int)myCenterY,3,3);
 	}
 	public void move()
 	{
 		myCenterX+=myDirectionX;
 		myCenterY+=myDirectionY;
-		if(myCenterY<1 || myCenterY>499 || myCenterX<1 || myCenterX>499)
-		{
-			ed.remove(this);
-		}
 	}
 	public void setX(int x){myCenterX = x;}  
   	public int getX(){return (int)myCenterX;}   
